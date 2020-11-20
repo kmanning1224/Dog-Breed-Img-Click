@@ -3,9 +3,8 @@ import numpy as np
 from werkzeug.utils import secure_filename 
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.xception import (
-	Xception, preprocess_input)
+	Xception, preprocess_input,decode_predictions)
 from tensorflow.keras.models import load_model
-from flask import Flask, request, render_template
 
 def load_model():
     	# load the pre-trained Keras model
@@ -40,3 +39,21 @@ def prepare_model(image_path, model):
     predict = model.predict(x)
     # return the processed plot
     return predict
+def DataResult1():
+    if request.method == 'POST':
+        print(request)
+        filesave2 = getfile(request)
+        print(filesave2)
+        preds = prepare_model(filesave2, model)
+
+        pclass = decode_predictions(preds, top=5)
+        #test prediction
+        
+        bad_chars=[';',':','_','!','*']
+        result = str(pclass[0][0][1])
+
+        for i in bad_chars:
+            result = result.replace(i, ' ')
+            result = result.title()
+            
+        print(result)
