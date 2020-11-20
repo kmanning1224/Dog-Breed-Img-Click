@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 from apps.manualpred import predict1, predict2, predict3, predict4, predict5, predict6,predict7, predict8, predict9, predict10, predict11, predict12
-from apps.tensorflow import getfile, prepare_model, load_model, DataResult1
+#from apps.tensorflow import getfile, prepare_model, load_model, DataResult1
 
 app = Flask(__name__, template_folder='template')
 
@@ -11,11 +11,6 @@ app = Flask(__name__, template_folder='template')
 def index():
 
     return render_template('final.html')
-
-@app.route('/prediction', methods=['GET','POST'])
-def result1():
-    results = DataResult1()
-    return results
 
 
 @app.route('/manualpreds1', methods=['POST'])
