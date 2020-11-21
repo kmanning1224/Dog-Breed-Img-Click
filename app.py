@@ -86,6 +86,11 @@ def index():
 
     return render_template('final.html')
 
+@app.route('/upload',  methods=['GET'])
+def index():
+
+    return render_template('upload.html')
+
 
 @app.route('/manualpreds1', methods=['POST'])
 def manualpred1():
