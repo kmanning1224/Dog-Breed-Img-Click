@@ -11,6 +11,10 @@
     position: relative; 
     top: 40px;
 }
+DIV.col-center {
+    min-height: 10em;
+    display: table-cell;
+    vertical-align: middle }
 
 .slider {
     width: 800px;

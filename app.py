@@ -7,8 +7,10 @@ from tensorflow.keras.applications.xception import (
 from tensorflow.keras.models import load_model
 from flask import Flask, request, render_template
 import glob
+import pandas as pd
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 app = Flask(__name__, template_folder='template')
+import json
 from apps.manualpred import predict1, predict2, predict3, predict4, predict5, predict6,predict7, predict8, predict9, predict10, predict11, predict12
 #from apps.tensorflow import getfile, prepare_model, load_model, DataResult1
 
@@ -81,16 +83,47 @@ def ImgResult():
 
 
 
-@app.route('/',  methods=['GET'])
+@app.route('/', methods=['GET'])
 def index():
 
     return render_template('final.html')
 
-@app.route('/upload',  methods=['GET'])
-def index():
-
+@app.route('/upload', methods=['GET'])
+def uploads():
     return render_template('upload.html')
 
+@app.route('/prediction', methods=['GET','POST'])
+def result1():
+    results = DataResult1()
+    return results
+@app.route('/plotfunc')
+def create_plot():
+    img = ImgResult()
+    # print(img)
+    preds = prepare_model(img, model)
+
+    pclass = decode_predictions(preds, top=4)
+    #test prediction
+    
+
+    # plot prediction
+    a_one = pclass[0][0][1]
+    a_two = pclass[0][1][1]
+    a_three = pclass[0][2][1]
+    a_four = pclass[0][3][1]
+    one = pclass[0][0][2]
+    two = pclass[0][1][2]
+    three = pclass[0][2][2]
+    four = pclass[0][3][2]
+    # print(a_one, a_two, a_three, a_four)
+    animals = [a_one, a_two, a_three, a_four]
+    probs = [one, two, three, four]
+    dfs = pd.DataFrame({'Breed': animals,'Percentage': probs})
+    jsons = dfs.to_json(orient="records")
+    jsons = json.loads(jsons)
+    jsons = json.dumps(jsons, indent=4)
+    print(dfs)
+    return jsons
 
 @app.route('/manualpreds1', methods=['POST'])
 def manualpred1():

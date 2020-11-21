@@ -39,12 +39,12 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse d-flex" id="navbarMain">
-    <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/">About our Project</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link" href="/upload">Image Upload</a>
       </li>
     <li class="nav-item">
         <a class="nav-link" href="/adopt">Adopt</a>
@@ -61,7 +61,9 @@ h3 {
 h1{
   text-align:center;
 }
-</style>
+</style><div class="row"><div class="col-lg-1"></div>
+  <div class="col-lg-10 lg-secondary">
+    <div id="rcorners">
 <h1>Lets predict a dog using Xception! </h1>
 <h3 >Upload an Image below to see your prediction and plot!</h3>
 <br>
@@ -161,6 +163,7 @@ h1{
             <label for="radio11" class="manual-btn"></label>
             <label for="radio12" class="manual-btn"></label>
         </div>
+        <br><br><br><br><br>
         <!--manual navigation end-->
     </div>
     <!--image slider end-->
@@ -185,12 +188,13 @@ h1{
 <!-- <section> -->
     </div></div></nav>
 <!-- </section> -->
-<section><div class="container">
-<div class="wrapper">
-<div class="container-xl">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="p-5">
+<section><div class="row">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-10 lg-secondary" align="center">
+    <div id="rcorners" align="center">
+  <div class = "col-center">
+   
+          <div class="p-5" align="center">
             <form id="upload-file" method="post" enctype="multipart/form-data">
         <label for="imageUpload" class="upload-label">
         Click here to upload image!
@@ -199,22 +203,16 @@ h1{
     </form>
 
     <div class="image-section">
-        <div class="img-preview">
-            <div id="imagePreview">
+        <div class="img-preview" align="center">
+            <div id="imagePreview" align="center">
             </div>
         </div>
         <div>
-              <button type="button" class="btn btn-success btn-lg "  id="btn-predict">Predict!</button>
+              <button type="button" class="btn btn-success btn-lg "  id="btn-predict" align="center">Predict!</button>
           <br>
         </div>
-        <div class="loader" style="display:none;"></div>
+        <div class="loader" style="display:none;" align="center"></div>
     </div>
-          </div>
-        </div>
-          <div class="col-lg-6"></div>
-      </div>
-</div>
-</div>
 
 
      <br>
@@ -225,7 +223,7 @@ h1{
     <div class="col-lg-10">
   
   <!-- Top Guess by Xception -->
-   <div><h2 id="result"></h2> </div>
+   <div><h2 id="result" align="center"></h2> </div>
    <!-- Plot section -->
   <div id= "barplot"></div>
     </div>
@@ -246,51 +244,7 @@ h1{
     <script src="{{ url_for('static', filename='js/plotsas.js') }}" type="text/javascript"></script>
   
 
-    <!--
-
-<div class="wrapper">
-<div class="container-xl">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="p-5">
-            <form id="upload-file" method="post" enctype="multipart/form-data">
-        <label for="imageUpload" class="upload-label">
-        Click here to upload image!
-        </label>
-        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
-    </form>
-
-    <div class="image-section">
-        <div class="img-preview">
-            <div id="imagePreview">
-            </div>
-        </div>
-        <div>
-              <button type="button" class="btn btn-success btn-lg "  id="btn-predict">Predict!</button>
-          <br>
-        </div>
-        <div class="loader" style="display:none;"></div>
-    </div>
-          </div>
-        </div>
-          <div class="col-lg-6"></div>
-      </div>
-</div>
-</div>
-
-
-     <br>
-
-<div class="container">
-  <div class="row">
-   <div class="col-lg-1"></div> 
-    <div class="col-lg-10">
-  
-
-   <div><h2 id="result"></h2> </div>
-
-  <div id= "barplot"></div>
-    </div> -->
+    
   <footer>
     </footer>
 
